@@ -6,15 +6,15 @@
 #define THEORY_OF_PROBABILITY_TEST_H
 
 // факториал
-int factorial(int n);
+long int factorial(int n);
 
 // количество размещений без повторений
-int Ank(int n, int k);
+long int Ank(int n, int k);
 
 // количество сочетаний без повторений
-int Cnk(int n, int k);
+long int Cnk(int n, int k);
 
 // сокращение дроби a/b
-void reduce(int *a, int *b);
+void reduce(long int *a, long int *b);
 
 #endif //THEORY_OF_PROBABILITY_TEST_H

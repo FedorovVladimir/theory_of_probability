@@ -7,23 +7,33 @@
 #include <iso646.h>
 #include "theory_of_probability.h"
 
-int factorial(int n) {
-    int q = 1;
+long int factorial(int n) {
+    long int q = 1;
     for (int i = 1; i <= n; ++i) {
         q *= i;
+        if (q < 0) {
+            return -1;
+        }
     }
     return q;
 }
 
-int Ank(int n, int k) {
-    return factorial(n) / factorial(n-k);
+long int Ank(int n, int k) {
+    long int q = 1;
+    for (int i = n - k + 1; i <= n; ++i) {
+        q *= i;
+        if (q < 0) {
+            return -1;
+        }
+    }
+    return q;
 }
 
-int Cnk(int n, int k) {
+long int Cnk(int n, int k) {
     return Ank(n, k) / factorial(k);
 }
 
-void reduce(int *a, int *b) {
+void reduce(long int *a, long int *b) {
     for (int i = 2; i <= sqrt(*a); ++i) {
         if (!((*a)%i) and !((*b)%i)) {
             *a /= i;
