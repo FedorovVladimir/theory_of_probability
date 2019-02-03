@@ -1,30 +1,23 @@
 #include <stdio.h>
+#include "theory_of_probability.h"
 
-int Cnk(int n, int k);
-int Ank(int n, int k);
-
-int factorial(int n);
+// В урне имеется n шаров, из них n1 белых и n2 чёрных (n1 + n2 = n).
+// Опыт: наугад извлекаются m шаров (без возвращения).
+// Найти вероятность события A = {среди выбранных m шаров окажется ровно k белых}.
 
 int main() {
-    int n = 10;
-    int k = 3;
-    printf("Ank = A(%d, %d) = %d\n", n, k, Ank(n, k));
-    printf("Cnk = C(%d, %d) = %d\n", n, k, Cnk(n, k));
+    int n1 = 5; // белых
+    int n2 = 5; // черных
+    int m = 3; // всего вытаскиваем
+    int k = 1; // вытаскиваем белых
+
+    int a = Cnk(n1, k) * Cnk(n2, m - k);
+    int b = Cnk(n1 + n2, m);
+    double Pa = (double) a / b;
+
+    printf("P(a) = %f\n", Pa);
+    reduce(&a, &b);
+    printf("P(a) = %d/%d\n", a, b);
+
     return 0;
-}
-
-int Ank(int n, int k) {
-    return factorial(n) / factorial(n-k);
-}
-
-int Cnk(int n, int k) {
-    return Ank(n, k) / factorial(k);
-}
-
-int factorial(int n) {
-    int q = 1;
-    for (int i = 1; i <= n; ++i) {
-        q *= i;
-    }
-    return q;
 }

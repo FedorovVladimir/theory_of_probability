@@ -3,4 +3,4 @@ project(theory_of_probability C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(theory_of_probability main.c)
+add_executable(theory_of_probability main.c theory_of_probability.h theory_of_probability.c)
